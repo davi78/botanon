@@ -219,8 +219,8 @@ async def chating(message : types.Message, state: FSMContext):
 		if message.from_user.username == None:
                 	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
             	else:
-                	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'ID Pasangan kamu @' + message.from_user.username)
-                	await message.answer('ID Kamu Telah Terkirim @' + message.from_user.username)
+                	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
+                	await message.answer('@' + message.from_user.username)
 
         elif user_data['msg'] == '❌Hentikan Obrolan':
             await message.answer('Obrolan dihentikan!',reply_markup=menu_msg_chating)
