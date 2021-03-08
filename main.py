@@ -55,7 +55,7 @@ async def start(message : types.Message, state: FSMContext):
 
     button_info_project = KeyboardButton('Backpack👜')
 
-    ranked = KeyboardButton('Рейтинг⭐️')
+    ranked = KeyboardButton('Chat Teratas⭐️')
 
     count_users = KeyboardButton(f'В боте уже {int(db.count_user() * 1.5)} пользователей🥳')
 
@@ -112,7 +112,7 @@ async def search(message : types.Message):
         warning_log.warning(e)
 
 
-@dp.message_handler(lambda message : message.text == 'Рейтинг⭐️')
+@dp.message_handler(lambda message : message.text == 'Chat Teratas⭐️')
 async def ranked(message : types.Message, state: FSMContext):
     ''' Функция для вывода рейтинга '''
     try:
