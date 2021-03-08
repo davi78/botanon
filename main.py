@@ -53,7 +53,7 @@ async def start(message : types.Message, state: FSMContext):
 
     button_search = KeyboardButton('Cari pasangan🔍')
 
-    button_info_project = KeyboardButton('Всякая всячина👜')
+    button_info_project = KeyboardButton('Backpack👜')
 
     ranked = KeyboardButton('Рейтинг⭐️')
 
@@ -66,9 +66,9 @@ async def start(message : types.Message, state: FSMContext):
     await bot.send_message(message.chat.id,'👋 Привет!\n\nЯ Chatium, бот для анонимного общения\nИ чего ты ждёшь,давай начнём!\n\nТыкай на кнопки внизу, а там разберёмся\n\nНовости и мемные переписки - https://t.me/chatium_community \n\nЛамповое общения - https://t.me/chatium_chat',reply_markup=mark_menu)
 
 
-@dp.message_handler(lambda message : message.text == 'Всякая всячина👜' or message.text == 'О проекте🧑‍💻' or message.text == 'Все ссылки на нас' or message.text == '[ Для разработчиков ]',state='*')
+@dp.message_handler(lambda message : message.text == 'Backpack👜' or message.text == 'О проекте🧑‍💻' or message.text == 'Все ссылки на нас' or message.text == '[ Для разработчиков ]',state='*')
 async def about_project(message : types.Message):
-    if message.text == 'Всякая всячина👜':
+    if message.text == 'Backpack👜':
 
         for_developers = KeyboardButton('[ Для разработчиков ]')
 
