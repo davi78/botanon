@@ -216,7 +216,7 @@ async def chating(message : types.Message, state: FSMContext):
         user_data = await state.get_data()
 
         if user_data['msg'] == 'Kirim ID kamu kepasanganmu😜':
-		if message.from_user.username == None: 
+		if message.from_user.username == None:
 			await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
             	else:
                 	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Pasanganmu mengirimkan ID\n@' + message.from_user.username)
