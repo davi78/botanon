@@ -149,12 +149,12 @@ async def chooce_sex(message : types.Message, state: FSMContext):
             db.add_to_queue(message.from_user.id,False)
         else:
             db.add_to_queue(message.from_user.id,db.get_sex_user(message.from_user.id)[0])
-        await message.answer('Ищем для вас человечка..')
+        await message.answer('Tunggu Sebentar..Kami Sedang mencari Pasanganmu')
 
         #кнопки
-        stop = KeyboardButton('❌Остановить диалог')
+        stop = KeyboardButton('❌Hentikan Obrolan')
 
-        share_link = KeyboardButton('🏹Отправить ссылку на себя')
+        share_link = KeyboardButton('Kirim ID kamu kepasanganmu😜')
 
         coin = KeyboardButton('Подбросить монетку🎲')
 
@@ -215,16 +215,16 @@ async def chating(message : types.Message, state: FSMContext):
 
         user_data = await state.get_data()
 
-        if user_data['msg'] == '🏹Отправить ссылку на себя':
+        if user_data['msg'] == 'Kirim ID kamu kepasanganmu😜':
             if message.from_user.username == None:
-                await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Пользователь не заполнил никнейм в настройках телеграма!')
+                await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
             else:
                 await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
                 await message.answer('@' + message.from_user.username)
 
-        elif user_data['msg'] == '❌Остановить диалог':
-            await message.answer('Диалог закончился!',reply_markup=menu_msg_chating)
-            await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Диалог закончился!',reply_markup=menu_msg_chating)
+        elif user_data['msg'] == '❌Hentikan Obrolan':
+            await message.answer('Obrolan dihentikan!',reply_markup=menu_msg_chating)
+            await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Obrolan dihentikan!',reply_markup=menu_msg_chating)
             db.update_connect_with(None,db.select_connect_with(message.from_user.id)[0])
             db.update_connect_with(None,message.from_user.id)
 
