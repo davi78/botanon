@@ -216,12 +216,13 @@ async def chating(message : types.Message, state: FSMContext):
         user_data = await state.get_data()
 
         if user_data['msg'] == 'Kirim ID kamu kepasanganmu😜':
-		await message.answer('ID kamu terkirim!',reply_markup=menu_msg_chating)
-            	await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Pasangan Kamu mengirim ID!',reply_markup=menu_msg_chating)
-                await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
-            else:
-                await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
-                await message.answer('@' + message.from_user.username)
+		if message.from_user.username == None:
+                	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
+            	else:
+			await message.answer('ID kamu terkirim!',reply_markup=menu_msg_chating)
+            		await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Pasangan Kamu mengirim ID!',reply_markup=menu_msg_chating)
+                	await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
+                	await message.answer('@' + message.from_user.username)
 
         elif user_data['msg'] == '❌Hentikan Obrolan':
             await message.answer('Obrolan dihentikan!',reply_markup=menu_msg_chating)
