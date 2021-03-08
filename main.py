@@ -126,7 +126,7 @@ async def ranked(message : types.Message, state: FSMContext):
                     final_top = final_top + str(top_count) + ' Juara - :(нету ника' + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1] + '\n'
                 else:
                     rofl_list = ['\n Bagus Bisa Mencapai Rekor😳','\n Lumayan Lah🙈','\n Sedikit Menarik😮','\n Jenius Kayanya🧠','\n Jomblo pasti😂']
-                    final_top = final_top + 'Rangking' + str(top_count) + ' - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
+                    final_top = final_top + 'Rangking ' + str(top_count) + ' - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
         await message.answer(f'Peringkat Teratas Untuk saat ini\nDalam menggunakan bot😎 :\n\n{final_top}')
     except Exception as e:
         warning_log.warning(e)
@@ -189,8 +189,8 @@ async def chooce_sex(message : types.Message, state: FSMContext):
         await Chating.msg.set()
 
 
-        await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Pasangan Ditemukan.., Silahkan mulai Obrolan💬',reply_markup=menu_msg)
-        await message.answer('Pasangan Ditemukan..., Silahkan mulai Obrolan💬',reply_markup=menu_msg)
+        await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Pasangan Ditemukan.. Silahkan mulai Obrolan💬',reply_markup=menu_msg)
+        await message.answer('Pasangan Ditemukan... Silahkan mulai Obrolan💬',reply_markup=menu_msg)
         return
     except Exception as e:
         warning_log.warning(e)
@@ -215,8 +215,9 @@ async def chating(message : types.Message, state: FSMContext):
 
         user_data = await state.get_data()
 
-        if user_data['msg'] == 'ID kamu Terkirim😜':
-            if message.from_user.username == none:
+        if user_data['msg'] == 'Kirim ID kamu kepasanganmu😜':
+		await message.answer('ID kamu terkirim!',reply_markup=menu_msg_chating)
+            	await bot.send_message(db.select_connect_with(message.from_user.id)[0],'Pasangan Kamu mengirim ID!',reply_markup=menu_msg_chating)
                 await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
             else:
                 await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
