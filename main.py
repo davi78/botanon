@@ -97,17 +97,17 @@ async def search(message : types.Message):
         if(not db.user_exists(message.from_user.id)): #если пользователя с таким telegram id не найдено
             db.add_user(message.from_user.username,message.from_user.id) #добавляем юзера в табличку дб
 
-        male = KeyboardButton('Парня')
+        male = KeyboardButton('Laki-Laki')
 
-        wooman = KeyboardButton('Девушку')
+        wooman = KeyboardButton('Perempuan')
 
-        back = KeyboardButton('Назад')
+        back = KeyboardButton('Back')
 
         sex_menu = ReplyKeyboardMarkup(one_time_keyboard=True)
 
         sex_menu.add(male,wooman,back)
 
-        await message.answer('Выбери пол собеседника!\nКого вы ищете?)',reply_markup=sex_menu)
+        await message.answer('Pilih jenis kelamin pasangan Anda!\nSiapa yang kamu cari?',reply_markup=sex_menu)
     except Exception as e:
         warning_log.warning(e)
 
