@@ -135,16 +135,16 @@ async def ranked(message : types.Message, state: FSMContext):
 class Chating(StatesGroup):
 	msg = State()
 
-@dp.message_handler(lambda message: message.text == 'Парня' or message.text == 'Девушку',state='*')
+@dp.message_handler(lambda message: message.text == 'Laki-Laki' or message.text == 'Perempuan',state='*')
 async def chooce_sex(message : types.Message, state: FSMContext):
     ''' Выбор пола для поиска '''
     try:
         if db.queue_exists(message.from_user.id):
             db.delete_from_queue(message.from_user.id)
-        if message.text == 'Парня':
+        if message.text == 'Laki-Laki':
             db.edit_sex(True,message.from_user.id)
             db.add_to_queue(message.from_user.id,True)
-        elif message.text == 'Девушку':
+        elif message.text == 'Perempuan':
             db.edit_sex(False,message.from_user.id)
             db.add_to_queue(message.from_user.id,False)
         else:
