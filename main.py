@@ -123,10 +123,10 @@ async def ranked(message : types.Message, state: FSMContext):
                 top_count +=1
                 if db.get_name_user(d) == None:
                     rofl_list = ['\nебааа#ь ты жёсткий😳','\nвасап👋','\nбро полегче там😮','\nгений🧠','\nреспект🤟']
-                    final_top = final_top + str(top_count) + 'Juara - :(нету ника' + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1] + '\n'
+                    final_top = final_top + str(top_count) + ' Juara - :(нету ника' + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1] + '\n'
                 else:
-                    rofl_list = ['\nBagus Bisa Mencapai Rekor😳','\nLumayan Lah🙈','\nSedikit Menarik😮','\nJenius Kayanya🧠','\nJomblo pasti😂']
-                    final_top = final_top + str(top_count) + 'Rangking - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
+                    rofl_list = ['\n Bagus Bisa Mencapai Rekor😳','\n Lumayan Lah🙈','\n Sedikit Menarik😮','\n Jenius Kayanya🧠','\n Jomblo pasti😂']
+                    final_top = final_top + 'Rangking' + str(top_count) ' - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
         await message.answer(f'Peringkat Teratas Untuk saat ini\nDalam menggunakan bot😎 :\n\n{final_top}')
     except Exception as e:
         warning_log.warning(e)
@@ -215,8 +215,8 @@ async def chating(message : types.Message, state: FSMContext):
 
         user_data = await state.get_data()
 
-        if user_data['msg'] == 'Kirim ID kamu kepasanganmu😜':
-            if message.from_user.username == 'ID kamu Telah Terkirim':
+        if user_data['msg'] == 'ID kamu Terkirim😜':
+            if message.from_user.username == none:
                 await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'Kamu belum mengatur Username, Silahkan atur username kamu...\nDi pengaturan Telegran!')
             else:
                 await bot.send_message(db.select_connect_with_self(message.from_user.id)[0],'@' + message.from_user.username)
