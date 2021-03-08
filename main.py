@@ -51,7 +51,7 @@ async def start(message : types.Message, state: FSMContext):
 
     await state.finish()
 
-    button_search = KeyboardButton('Начать поиск🔍')
+    button_search = KeyboardButton('Cari pasangan🔍')
 
     button_info_project = KeyboardButton('Всякая всячина👜')
 
@@ -91,7 +91,7 @@ async def rules(message : types.Message):
     await message.answer('''📌Правила общения в @Chatium_Bot\n1. Любые упоминания психоактивных веществ. (наркотиков)\n2. Детская порнография. ("ЦП")\n3. Мошенничество. (Scam)\n4. Любая реклама, спам.\n5. Продажи чего либо. (например - продажа интимных фотографий, видео)\n6. Любые действия, нарушающие правила Telegram.\n7. Оскорбительное поведение.\n8. Обмен, распространение любых 18+ материалов\n\n''')
 
 @dp.message_handler(commands=['search'],state='*')
-@dp.message_handler(lambda message: message.text == 'Начать поиск🔍',state='*')
+@dp.message_handler(lambda message: message.text == 'Cari pasangan🔍',state='*')
 async def search(message : types.Message):
     try:
         if(not db.user_exists(message.from_user.id)): #если пользователя с таким telegram id не найдено
