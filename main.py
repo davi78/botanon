@@ -126,7 +126,7 @@ async def ranked(message : types.Message, state: FSMContext):
                     final_top = final_top + str(top_count) + ' Juara - :(нету ника' + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1] + '\n'
                 else:
                     rofl_list = ['\n Bagus Bisa Mencapai Rekor😳','\n Lumayan Lah🙈','\n Sedikit Menarik😮','\n Jenius Kayanya🧠','\n Jomblo pasti😂']
-                    final_top = final_top + 'Rangking' + str(top_count) ' - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
+                    final_top = final_top + 'Rangking' + str(top_count) + ' - @' + str(db.get_name_user(d)) + ' - ' + str(db.get_count_all_msg(d)) + ' Pesan' + rofl_list[top_count-1]  + '\n'
         await message.answer(f'Peringkat Teratas Untuk saat ini\nDalam menggunakan bot😎 :\n\n{final_top}')
     except Exception as e:
         warning_log.warning(e)
