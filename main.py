@@ -51,7 +51,7 @@ async def start(message : types.Message, state: FSMContext):
 
     await state.finish()
 
-    button_search = KeyboardButton('Начать поиск🔍')
+    button_search = KeyboardButton('Mencari Pasangan🔍')
 
     button_info_project = KeyboardButton('Всякая всячина👜')
 
