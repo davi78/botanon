@@ -91,7 +91,7 @@ async def about_project(message : types.Message):
 @dp.message_handler(commands=['rules'],state='*')
 @dp.message_handler(lambda message : message.text == 'Rules bot📌')
 async def rules(message : types.Message):
-    await message.answer('''📌Aturan di bot @Chatium_Bot\n1. Tidak boleh share yang berbau pornografi!\n2. Wajib join grup @caritemanh\n3. Berkata sopan!\n4. Bijak dalam menggunakan bot\n\n''')
+    await message.answer('''📌Aturan di bot @chatjomblohalu2_bot\n1. Tidak boleh share yang berbau pornografi!\n2. Wajib join grup @caritemanh\n3. Berkata sopan!\n4. Bijak dalam menggunakan bot\n\n''')
 
 @dp.message_handler(commands=['search'],state='*')
 @dp.message_handler(lambda message: message.text == 'Cari pasangan🔍',state='*')
